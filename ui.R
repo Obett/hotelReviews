@@ -20,7 +20,7 @@ library(tools)
 
 shinyUI(fluidPage(
   title = "Sentiment Analysis Of 20 Hotels",
-  titlePanel(title=div(img(src="logo.png",align='right'),"Sentiment Analysis Of 20 Hotels")),
+  titlePanel(title=div(img(src="NGT23030556D_PASSPORT.jpg",align='right'),"Sentiment Analysis Of 20 Hotels")),
   
   # Input in sidepanel:
   sidebarPanel(
@@ -56,7 +56,7 @@ shinyUI(fluidPage(
   mainPanel( 
     tabsetPanel(type = "tabs",
                 #
-                tabPanel("Overview & DeDos Hotel Dataset",h4(p("How to use this App")),
+                tabPanel("Overview & 20 Hotel Reviews Dataset",h4(p("How to use this App")),
                          
                          p("To use this app you need a document corpus in txt file format. Make sure each document is separated from another document with a new line character.
                            To do Sentiment Analysis Of 20 Hotels in your text corpus, click on Browse in left-sidebar panel and upload the txt file. Once the file is uploaded it will do the computations in 
@@ -70,14 +70,14 @@ shinyUI(fluidPage(
                          #, height = 280, width = 400
                          br(),
                          h4(p("Download text file")),
-                         downloadButton('downloadData1', 'DeDos_hotel reviews txt file'),br(),br(),
-                         p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the DeDos Hotel file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
+                         downloadButton('downloadData1', '20_Hotel_Reviews reviews txt file'),br(),br(),
+                         p("Please note that download will not work with RStudio interface.  So open this app in a web-browser and then download the 20 Hotel Reviews file. For opening this app in web-browser click on \"Open in Browser\" as shown at top left of the browser. Below is Image is Samuel Obetta Shiny R programmer "),
                          img(src = "NGT23030556D_PASSPORT.jpg")
                 )
                 ,
-                # tabPanel("DeDos Hotel dataset", h4(p("Download Sample text file")),
-                #          downloadButton('downloadData1', 'DeDos_hotel reviews txt file'),br(),br(),
-                #          p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the DeDos Hotel file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
+                # tabPanel("20 Hotel Reviews dataset", h4(p("Download Sample text file")),
+                #          downloadButton('downloadData1', '20_Hotel_Reviews reviews txt file'),br(),br(),
+                #          p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the 20 Hotel Reviews file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
                 #          img(src = "NGT23030556D_PASSPORT.jpg")),
                 tabPanel("DTM",
                          verbatimTextOutput("dtmsize"),

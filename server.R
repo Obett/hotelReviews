@@ -1,5 +1,5 @@
 #################################################
-#               Basic Text Analysis             #
+#                Sentiment Analysis             #
 #################################################
 
 shinyServer(function(input, output,session) {
@@ -10,28 +10,28 @@ shinyServer(function(input, output,session) {
     else {
       
       if(file_ext(input$file$datapath)=="txt"){
-        Document = readLines(input$file$datapath)
-        #colnames(Document) <- c("Doc.id","Document")
-        Doc.id=seq(1:length(Document))
-        calib=data.frame(Doc.id,Document)
+        Review = readLines(input$file$datapath)
+        #colnames(Review) <- c("Hotel.name","Review")
+        Hotel.name=seq(1:length(Review))
+        calib=data.frame(Hotel.name,Review)
         print(input$file$name)
         return(calib)}
     else{
-      Document = read.csv(input$file$datapath ,header=TRUE, sep = ",", stringsAsFactors = F)
-      Document[,1] <- str_to_title(Document[,1])
-      Document[,1] <- make.names(Document[,1], unique=TRUE)
-      Document[,1] <- tolower(Document[,1])
-      Document[,1] <- str_replace_all(Document[,1],"\\.","_")
-      Document<-Document[complete.cases(Document), ]
-      Document <- Document[!(duplicated(Document[,1])), ]
-      rownames(Document) <- Document[,1]
+      Review = read.csv(input$file$datapath ,header=TRUE, sep = ",", stringsAsFactors = F)
+      Review[,1] <- str_to_title(Review[,1])
+      Review[,1] <- make.names(Review[,1], unique=TRUE)
+      Review[,1] <- tolower(Review[,1])
+      Review[,1] <- str_replace_all(Review[,1],"\\.","_")
+      Review<-Review[complete.cases(Review), ]
+      Review <- Review[!(duplicated(Review[,1])), ]
+      rownames(Review) <- Review[,1]
       
-     # colnames(Document) <- c("Doc.id","Document")
-      #Doc.id=seq(1:length(Document))
-      # calib=data.frame(Doc.id,Document)
+     # colnames(Review) <- c("Hotel.name","Review")
+      #Hotel.name=seq(1:length(Review))
+      # calib=data.frame(Hotel.name,Review)
       #print(input$file$name)
       
-      return(Document)
+      return(Review)
       }
       
     }
@@ -315,7 +315,7 @@ shinyServer(function(input, output,session) {
     if (is.null(input$file)|input$apply==0) {return(NULL)}
     else {
       size = dim(t(dtm_tcm()$dtm))
-      dtm_size = paste("Term Document Matrix (TDM) size is ", size[1]," X ", size[2],". Below are the first 10 docs X top 10 tokens")
+      dtm_size = paste("Term Review Matrix (TDM) size is ", size[1]," X ", size[2],". Below are the first 10 docs X top 10 tokens")
       return(dtm_size)
     }
   })
@@ -364,7 +364,7 @@ shinyServer(function(input, output,session) {
   
   output$concordance = renderDataTable({
     
-    # a0 = concordance.r(dataset()$Document,input$concord.word, input$window)
+    # a0 = concordance.r(dataset()$Review,input$concord.word, input$window)
     # concordance = a0
     # datatable(concordance, escape = F, options = list(dom = "lt"))
     datatable(df_reactive(), escape = F, options = list(dom = "lt"))
@@ -378,7 +378,7 @@ shinyServer(function(input, output,session) {
       a2 = tibble(phrases = unlist(a1));
       a0 = bigram.collocation(a2)
       
-    #  a0 = bigram.collocation(dataset()$Document)
+    #  a0 = bigram.collocation(dataset()$Review)
       a0$coll.ratio <- round(a0$coll.ratio,2)
       a0 = a0[order(a0$n, decreasing = T),]
       if (nrow(a0) > 100){
@@ -493,9 +493,9 @@ shinyServer(function(input, output,session) {
   
   
   output$downloadData1 <- downloadHandler(
-    filename = function() { "Nokia_Lumia_reviews.txt" },
+    filename = function() { "DeDos_hotel.txt" },
     content = function(file) {
-      writeLines(readLines("data/Nokia_Lumia_reviews.txt"), file)
+      writeLines(readLines("data/DeDos_hotel.txt"), file)
     }
   )
   

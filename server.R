@@ -1,5 +1,5 @@
 #################################################
-#                Sentiment Analysis             #
+#   Sentiment Analysis Of 20 Hotels             #
 #################################################
 
 shinyServer(function(input, output,session) {
@@ -493,9 +493,9 @@ shinyServer(function(input, output,session) {
   
   
   output$downloadData1 <- downloadHandler(
-    filename = function() { "DeDos_hotel.txt" },
+    filename = function() { "20_Hotel_Reviews.txt" },
     content = function(file) {
-      writeLines(readLines("data/DeDos_hotel.txt"), file)
+      writeLines(readLines("data/20_Hotel_Reviews.txt"), file)
     }
   )
   

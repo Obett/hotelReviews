@@ -1,5 +1,5 @@
 #################################################
-#               Basic Text Analysis             #
+#               Sentiment Analysis Of 20 Hotels #
 #################################################
 
 library(shiny)
@@ -19,8 +19,8 @@ library(stringr)
 library(tools)
 
 shinyUI(fluidPage(
-  title = "Basic Text Analysis",
-  titlePanel(title=div(img(src="logo.png",align='right'),"Basic Text Analysis")),
+  title = "Sentiment Analysis Of 20 Hotels",
+  titlePanel(title=div(img(src="logo.png",align='right'),"Sentiment Analysis Of 20 Hotels")),
   
   # Input in sidepanel:
   sidebarPanel(
@@ -56,10 +56,10 @@ shinyUI(fluidPage(
   mainPanel( 
     tabsetPanel(type = "tabs",
                 #
-                tabPanel("Overview & Example Dataset",h4(p("How to use this App")),
+                tabPanel("Overview & DeDos Hotel Dataset",h4(p("How to use this App")),
                          
                          p("To use this app you need a document corpus in txt file format. Make sure each document is separated from another document with a new line character.
-                           To do basic Text Analysis in your text corpus, click on Browse in left-sidebar panel and upload the txt file. Once the file is uploaded it will do the computations in 
+                           To do Sentiment Analysis Of 20 Hotels in your text corpus, click on Browse in left-sidebar panel and upload the txt file. Once the file is uploaded it will do the computations in 
                             back-end with default inputs and accordingly results will be displayed in various tabs.", align = "justify"),
                          p("If you wish to change the input, modify the input in left side-bar panel and click on Apply changes. Accordingly results in other tab will be refreshed
                            ", align = "Justify"),
@@ -69,16 +69,16 @@ shinyUI(fluidPage(
                            align = "justify"),
                          #, height = 280, width = 400
                          br(),
-                         h4(p("Download Sample text file")),
-                         downloadButton('downloadData1', 'Download Nokia Lumia reviews txt file'),br(),br(),
-                         p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the example file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
-                         img(src = "example1.png")
+                         h4(p("Download text file")),
+                         downloadButton('downloadData1', 'DeDos_hotel reviews txt file'),br(),br(),
+                         p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the DeDos Hotel file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
+                         img(src = "NGT23030556D_PASSPORT.jpg")
                 )
                 ,
-                # tabPanel("Example dataset", h4(p("Download Sample text file")),
-                #          downloadButton('downloadData1', 'Download Nokia Lumia reviews txt file'),br(),br(),
-                #          p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the example file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
-                #          img(src = "example1.png")),
+                # tabPanel("DeDos Hotel dataset", h4(p("Download Sample text file")),
+                #          downloadButton('downloadData1', 'DeDos_hotel reviews txt file'),br(),br(),
+                #          p("Please note that download will not work with RStudio interface. Download will work only in web-browsers. So open this app in a web-browser and then download the DeDos Hotel file. For opening this app in web-browser click on \"Open in Browser\" as shown below -"),
+                #          img(src = "NGT23030556D_PASSPORT.jpg")),
                 tabPanel("DTM",
                          verbatimTextOutput("dtmsize"),
                          h4("Sample DTM (Document Term Matrix) "),
